@@ -6,7 +6,9 @@ services:
       POSTGRES_USER: homebuilder
       POSTGRES_PASSWORD: homebuilder
     ports:
-      - "5432:5432"
+      # Published on 5433: a local Postgres already owns 5432 on the dev machine, and it
+      # answers localhost first, so the app would silently talk to the wrong database.
+      - "5433:5432"
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
     healthcheck:

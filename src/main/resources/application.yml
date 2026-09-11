@@ -1,0 +1,21 @@
+server:
+  port: 8080
+  error:
+    include-message: never
+
+spring:
+  application:
+    name: job-schedule-api
+  datasource:
+    url: jdbc:postgresql://localhost:5433/homebuilder
+    username: homebuilder
+    password: homebuilder
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8081/realms/homebuilder
+
+logging:
+  level:
+    org.springframework.security: INFO
